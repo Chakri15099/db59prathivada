@@ -3,7 +3,7 @@ var router = express.Router();
  
 // Require controller modules. 
 var api_controller = require('../controllers/api'); 
-var bat_controller = require('../controllers/bat'); 
+var bat_controller = require('../controllers/bats'); 
  
 /// API ROUTE /// 
  

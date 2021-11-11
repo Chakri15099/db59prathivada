@@ -6,24 +6,10 @@ block content
   div(class="container-fluid")
         div(class="row")
             -
-                let bats = [
-                    {
-                        "brand": "Adidas",
-                        "types": "English Willow",
-                        "cost": "three hundred USD"
-                    },
-                    {
-                        "brand": "Nike",
-                        "types": "Kashmir willow",
-                        "cost": "two hundred USD"
-                    },
-                    {
-                        "brand": "SS",
-                        "types": "willow",
-                        "cost": "one hundred USD"
-                    },                   
-                ]
+                let bats  = results
+                
             each c,index in bats
+            
                 div(class="col-sm-2" onclick=`buy(${index})`) #{c.brand}
                 div(class="col-sm-2" onclick=`buy(${index})`) #{c.types}
                 div(class="col-sm-2" onclick=`buy(${index})`) #{c.cost}
