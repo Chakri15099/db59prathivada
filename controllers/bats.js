@@ -25,18 +25,25 @@ exports.bat_view_all_Page = async function(req, res) {
 }; 
  
 // for a specific bat. 
-exports.bat_detail = function(req, res) { 
-    res.send('NOT IMPLEMENTED: bat detail: ' + req.params.id); 
+exports.bat_detail = async function(req, res) { 
+    console.log("detail"  + req.params.id) 
+    try { 
+        result = await bat.findById( req.params.id) 
+        res.send(result) 
+    } catch (error) { 
+        res.status(500) 
+        res.send(`{"error": document for id ${req.params.id} not found`); 
+    } 
 }; 
  
-// Handle Costume create on POST. 
+// Handle bat create on POST. 
 exports.bat_create_post = async function(req, res) { 
     console.log(req.body) 
     let document = new bat(); 
     // We are looking for a body, since POST does not have query parameters. 
     // Even though bodies can be in many different formats, we will be picky 
     // and require that it be a json object 
-    // {"costume_type":"goat", "cost":12, "size":"large"} 
+    // {"bat_type":"goat", "cost":12, "size":"large"} 
     document.brand = req.body.brand; 
     document.types = req.body.types; 
     document.cost = req.body.cost; 
@@ -56,6 +63,22 @@ exports.bat_delete = function(req, res) {
 }; 
  
 // Handle bat update form on PUT. 
-exports.bat_update_put = function(req, res) { 
-    res.send('NOT IMPLEMENTED: bat update PUT' + req.params.id); 
+exports.bat_update_put = async function(req, res) { 
+    console.log(`update on id ${req.params.id} with body 
+${JSON.stringify(req.body)}`) 
+    try { 
+        let toUpdate = await bat.findById( req.params.id) 
+        // Do updates of properties 
+        if(req.body.types)  
+               toUpdate.types = req.body.types; 
+        if(req.body.cost) toUpdate.cost = req.body.cost; 
+        if(req.body.brand) toUpdate.brand = req.body.brand; 
+        let result = await toUpdate.save(); 
+        console.log("Sucess " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": ${err}: Update for id ${req.params.id} 
+failed`); 
+    } 
 }; 
