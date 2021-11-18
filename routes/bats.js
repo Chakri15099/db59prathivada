@@ -12,5 +12,9 @@ router.get('/', function(req, res, next) {
 });
 /* GET detail bat page */ 
 router.get('/detail', bat_controlers.bat_view_one_Page); 
+/* GET create bat page */ 
+router.get('/create', bat_controlers.bat_create_Page);
+
+ 
 
 module.exports = router;

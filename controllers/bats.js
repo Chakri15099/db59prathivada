@@ -104,3 +104,30 @@ failed`);
         res.send(`{'error': '${err}'}`); 
     } 
 }; 
+ // Handle building the view for creating a bat. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.bat_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('batcreate', { title: 'bat Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+ // Handle building the view for updating a bat. 
+// query provides the id 
+exports.bat_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await bats.findById(req.query.id) 
+        res.render('batupdate', { title: 'bat Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+ 

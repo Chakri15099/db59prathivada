@@ -13,14 +13,13 @@ router.get('/', api_controller.api);
 /// bat ROUTES /// 
  
 // POST request for creating a bat.  
-router.post('/bat', bat_controller.bat_create_post); 
+router.post('/batS', bat_controller.bat_create_post); 
  
 // DELETE request to delete bat. 
 router.delete('/bat/:id', bat_controller.bat_delete); 
  
 // PUT request to update bat. 
-router.put('/bat/:id', 
-bat_controller.bat_update_put); 
+router.put('/batS/:id',bat_controller.bat_update_put); 
  
 // GET request for one bat. 
 router.get('/bat/:id', bat_controller.bat_detail); 
