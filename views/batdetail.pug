@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let batid = toShow._id 
+  - let batbrand = toShow.brand
+  - let battypes = toShow.types
+  - let batcost = toShow.cost 
+  div 
+    div.row 
+      div(class='batAttr mr-3') bat ID is: 
+      div #{batid} 
+    div.row 
+      div(class='batAttr mr-3') bat brand is: 
+      div #{batbrand} 
+    div.row 
+      div(class='batAttr mr-3') bat types is: 
+      div #{battypes} 
+    div.row 
+      div(class='batAttr mr-3') bat Cost is: 
+      div #{batcost} 

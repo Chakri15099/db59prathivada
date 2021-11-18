@@ -10,5 +10,7 @@ module.exports = router;
 router.get('/', function(req, res, next) {
   res.render('bats', { title: 'Search results for bats' });
 });
+/* GET detail bat page */ 
+router.get('/detail', bat_controlers.bat_view_one_Page); 
 
 module.exports = router;
