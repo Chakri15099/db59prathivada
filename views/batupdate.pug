@@ -3,16 +3,25 @@ extends layout
 block content 
   h1= title 
  
-  form(id='batForm', action="/resource/bat", method="POST") 
+  - let batid = toShow._id 
+  - let batbrand = toShow.brand
+  - let bat_type = toShow.types 
+  - let batcost = toShow.cost 
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{batid} 
+  - let actionid = "/resource/bats/" + batid 
+  form(id='batForm', action= actionid, method="PUT") 
     div.form-group 
         label.batAttr(for='brand') bat brand 
-        input#bat_type(type='text', name='brand') 
+        input#bat_type(type='text', name='brand', value= brand ) 
     div.form-group 
-        label.batAttr(for='type') bat type 
-        input#size(type='text', name='type') 
+        label.batAttr(for='types') bat type 
+        input#size(type='text', name='types', value= types ) 
     div.form-group 
         label.batAttr(for='cost') bat cost 
-        input#cost(type='number', name='cost') 
+        input#cost(type='number', name='cost', value= cost ) 
     input(type="submit") 
  
   script. 
@@ -20,15 +29,15 @@ block content
       event.preventDefault(); 
       // TODO do something here to show user that form is being submitted 
       fetch(event.target.action, { 
-        method: 'POST', 
+        method: 'PUT', 
         body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
       }).then((resp) => { 
         return resp.json(); // or resp.text() or whatever the server sends 
       }).then((body) => { 
-        alert("Save succeded") 
+        alert("Update succeded") 
         // TODO handle body 
       }).catch((error) => { 
         // TODO handle error 
-        alert("Save failed " + error ) 
+        alert("Update failed " + error ) 
       }); 
     }); 

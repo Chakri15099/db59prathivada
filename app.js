@@ -6,7 +6,7 @@ var logger = require('morgan');
 var batSchema = require('./models/bat');
 
 const connectionString =
-  process.env.MONGO_CON
+'mongodb+srv://Chakri:Chakri@cluster0.4uli3.mongodb.net/Project0?retryWrites=true&w=majority'
 mongoose = require('mongoose');
 mongoose.connect(connectionString,
   {
@@ -16,10 +16,10 @@ mongoose.connect(connectionString,
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var batsRouter = require('./routes/bats');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resource');
+var batRouter = require('./routes/bat');
 
 
 var app = express();
@@ -70,10 +70,10 @@ if (reseed) { recreateDB(); }
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/bats', batsRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource', resourceRouter);
+app.use('/bat', batRouter);
 
 
 // catch 404 and forward to error handler

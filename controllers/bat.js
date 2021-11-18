@@ -16,7 +16,7 @@ exports.bat_list = async function(req, res) {
 exports.bat_view_all_Page = async function(req, res) { 
     try{ 
         thebat = await bat.find(); 
-        res.render('bats', { title: 'bat Search Results', results: thebat }); 
+        res.render('bat', { title: 'bat Search Results', results: thebat }); 
     } 
     catch(err){ 
         res.status(500); 
@@ -97,13 +97,14 @@ failed`);
     try{ 
         result = await bat.findById( req.query.id) 
         res.render('batdetail',  
-{ title: 'bat Detail', toShow: result }); 
+   { title: 'bat Detail', toShow: result }); 
     } 
     catch(err){ 
         res.status(500) 
         res.send(`{'error': '${err}'}`); 
     } 
 }; 
+
  // Handle building the view for creating a bat. 
 // No body, no in path parameter, no query. 
 // Does not need to be async 
@@ -117,12 +118,14 @@ exports.bat_create_Page =  function(req, res) {
         res.send(`{'error': '${err}'}`); 
     } 
 }; 
- // Handle building the view for updating a bat. 
+ 
+
+// Handle building the view for updating a bat. 
 // query provides the id 
 exports.bat_update_Page =  async function(req, res) { 
     console.log("update view for item "+req.query.id) 
     try{ 
-        let result = await bats.findById(req.query.id) 
+        let result = await bat.findById(req.query.id) 
         res.render('batupdate', { title: 'bat Update', toShow: result }); 
     } 
     catch(err){ 
@@ -130,4 +133,3 @@ exports.bat_update_Page =  async function(req, res) {
         res.send(`{'error': '${err}'}`); 
     } 
 }; 
- 
