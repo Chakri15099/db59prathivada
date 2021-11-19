@@ -4,5 +4,4 @@ const batSchema = mongoose.Schema({
     types: String,
     cost: Number
 })
-module.exports = mongoose.model("bat",
-batSchema)
+module.exports = mongoose.model("bat",batSchema)

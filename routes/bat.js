@@ -20,4 +20,7 @@ router.get('/create', bat_controlers.bat_create_Page);
 /* GET create update page */ 
 router.get('/update', bat_controlers.bat_update_Page); 
 
+/* GET create bat page */ 
+router.get('/delete', bat_controlers.bat_delete_Page); 
+
 module.exports = router;
